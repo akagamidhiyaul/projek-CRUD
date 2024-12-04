@@ -71,15 +71,22 @@ class BarangController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, cr $cr)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'nama_barang' => 'required',
-            'jumlah' => 'required|integer',
+            'stock' => 'required|integer',
             'harga' => 'required|numeric',
         ]);
 
-        $barang->update($request->all());
+        // $barang->update($request->all());
+        Barang::where('id', $id)->update([
+            'name' => $request->nama_barang,
+            'stock' => $request->stock,
+            'type' => $request->type,
+            'harga' => $request->harga,
+        ]);
+
         return redirect()->route('barang.index')->with('success', 'Pembelian berhasil diperbarui!');
     }
 
@@ -96,4 +103,36 @@ class BarangController extends Controller
         }
         
     }
+
+
+    public function stock()
+    {
+        $barang = Barang::orderBy('stock', 'ASC')->get();
+        return view('barang.stock', compact('barang'));
+    }
+
+    public function stockEdit($id)
+    {
+        $barang = Barang::find($id);
+        return response()->json($barang);
+    }
+
+    public function updateStock(Request $request, $id)
+{
+    $request->validate([
+        'stock' => 'required|integer',
+    ]);
+
+    $barang = Barang::find($id);
+    
+    if($request->stock <= $barang->stock){
+        return response()->json(['message' => 'Stock tidak boleh kurang dari sebelumnya'], 400);
+    }else{
+        $barang->update(['stock' => $request->stock]);
+        return response()->json('Berhasil mengubah stock', 200);
+    };
+
 }
+
+}
+

@@ -11,13 +11,12 @@
                 <div class="card-body">
                     <form action="{{ route('barang.update', $barang->id) }}" method="POST">
                         @csrf
-                        @method('PUT')
+                        @method('PATCH')
                         <!-- Nama Barang -->
                         <div class="mb-3">
                             <label for="nama_barang" class="form-label">Nama Barang</label>
                             <input type="text" name="nama_barang" id="nama_barang" class="form-control" value="{{ old('nama_barang', $barang->nama_barang) }}" required>
                         </div>
-
                         <!-- Type Barang -->
                         <div class="mb-3">
                             <label for="type" class="form-label">Type Barang</label>

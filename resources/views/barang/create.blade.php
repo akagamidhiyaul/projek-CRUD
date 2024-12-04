@@ -17,6 +17,8 @@
                 <option value="" selected disabled>Pilih Tipe Barang</option>
                 <option value="Makanan">Makanan</option>
                 <option value="Minuman">Minuman</option>
+                {{-- <option value="barang">Barang</option>
+                <option value="Lain">Lainnya</option> --}}
             </select>
         </div>
 

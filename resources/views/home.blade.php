@@ -1,11 +1,11 @@
 @extends('layout.layouts')
 
 @section('content')
-<div class="jumbotron text-center bg-primary text-white py-5">
+<div class="jumbotron text-center bg-primary  py-5">
     <div class="container">
-        <h1 class="display-4">Selamat Datang di Mini Market</h1>
+        <h1 >Welcome to Barcelona store</h1>
         <p class="lead">Kelola pembelian dan pengguna dengan mudah dan efisien.</p>
-        <a href="{{ route('order.index') }}" class="btn btn-light btn-lg mx-2">Kelola Pembelian</a>
+        <a href="#" class="btn btn-light btn-lg mx-2">Kelola Pembelian</a>
         <a href="{{ route('user.index') }}" class="btn btn-outline-light btn-lg mx-2">Kelola Pengguna</a>
     </div>
 </div>
